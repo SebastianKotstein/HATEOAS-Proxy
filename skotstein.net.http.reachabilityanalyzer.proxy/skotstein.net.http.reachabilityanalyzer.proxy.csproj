@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{89BB3BB0-0F25-4411-AF82-D696717DEC5A}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>skotstein.net.http.reachabilityanalyzer.proxy</RootNamespace>
+    <AssemblyName>skotstein.net.http.reachabilityanalyzer.proxy</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.OpenApi, Version=1.2.0.0, Culture=neutral, PublicKeyToken=3f5743946376f042, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.OpenApi.1.2.0\lib\net46\Microsoft.OpenApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.OpenApi.Readers, Version=1.2.0.0, Culture=neutral, PublicKeyToken=3f5743946376f042, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.OpenApi.Readers.1.2.0\lib\net46\Microsoft.OpenApi.Readers.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Restful.NET.Core">
+      <HintPath>..\..\..\WebServer.NET\RESTful.NET\RESTful.NET\bin\Debug\Restful.NET.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpYaml, Version=1.6.5.0, Culture=neutral, PublicKeyToken=1ced8108e942bc02, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpYaml.1.6.5\lib\net45\SharpYaml.dll</HintPath>
+    </Reference>
+    <Reference Include="skotstein.net.http.jsonkit">
+      <HintPath>..\..\..\WebServer.NET\RESTful.NET\skotstein.net.http.jsonkit\bin\Debug\skotstein.net.http.jsonkit.dll</HintPath>
+    </Reference>
+    <Reference Include="skotstein.net.http.urimodel">
+      <HintPath>..\..\..\HTTP-Model\UriModel\skotstein.net.http.urimodel\skotstein.net.http.urimodel\bin\Debug\skotstein.net.http.urimodel.dll</HintPath>
+    </Reference>
+    <Reference Include="skotstein.net.http.urimodel.openapi">
+      <HintPath>..\..\..\HTTP-Model\UriModel\skotstein.net.http.urimodel\skotstein.net.http.urimodel.openapi\bin\Debug\skotstein.net.http.urimodel.openapi.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="client\ApiClient.cs" />
+    <Compile Include="client\ApiRequest.cs" />
+    <Compile Include="client\ApiResponse.cs" />
+    <Compile Include="model\Hyperlink.cs" />
+    <Compile Include="model\PreflightResult.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="server\CustomizedProxyHandler.cs" />
+    <Compile Include="server\IProxyHandler.cs" />
+    <Compile Include="server\ProxyController.cs" />
+    <Compile Include="server\ProxyHandler.cs" />
+    <Compile Include="tools\CustomizedArguments.cs" />
+    <Compile Include="tools\CustomizedConsoleLogWriter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\skotstein.net.http.reachabilityanalyzer.tools\skotstein.net.http.reachabilityanalyzer.tools.csproj">
+      <Project>{154cd61e-04e0-408c-a05a-d5b19e12310d}</Project>
+      <Name>skotstein.net.http.reachabilityanalyzer.tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\skotstein.net.http.reachabilityanalyzer\skotstein.net.http.reachabilityanalyzer.csproj">
+      <Project>{72b772ad-cfa0-4e1f-a92a-13e96f48a9e3}</Project>
+      <Name>skotstein.net.http.reachabilityanalyzer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
